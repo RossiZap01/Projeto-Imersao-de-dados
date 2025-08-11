@@ -47,6 +47,11 @@ df_filtrado = df[
     (df['cargo'].isin(cargos_selecionados))
 ]
 
+# Se não houver dados filtrados, mostra aviso e encerra a execução
+if df_filtrado.empty:
+    st.warning("⚠️ Nenhum dado encontrado. Ajuste os filtros para visualizar resultados.")
+    st.stop()  # Para a execução do app aqui
+
 # Titulo e descrição principal
 st.title("🎲 Dashboard de Análise de Salários na Área de Dados")
 st.markdown("Explore os dados salariais na área de dados nos últimos anos. Utilize os filtros à esquerda para refinar sua análise.")
@@ -141,6 +146,9 @@ with coluna_grafico4:
     else:
         st.warning("Nenhum dado para exibir no gráfico de países.") 
 
+st.markdown("---")
+
 # --- Tabela de Dados Detalhados ---
 st.subheader("Dados Detalhados")
+
 st.dataframe(df_filtrado)
