@@ -89,7 +89,8 @@ with coluna_grafico1:
             y='cargo',
             orientation='h',
             title="Top 10 cargos por salário médio",
-            labels={'usd': 'Média salarial anual (USD)', 'cargo': ''}
+            labels={'usd': 'Média salarial anual (USD)', 'cargo': ''} ,
+            color_discrete_sequence = ['cornflowerblue']
         )
         grafico_cargos.update_layout(title_x=0.1, yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(grafico_cargos, use_container_width=True)
@@ -103,7 +104,8 @@ with coluna_grafico2:
             x='usd',
             nbins=30,
             title="Distribuição de salários anuais",
-            labels={'usd': 'Faixa salarial (USD)', 'count': ''}
+            labels={'usd': 'Faixa salarial (USD)', 'count': ''} ,
+            color_discrete_sequence = ['cornflowerblue']
         )
         grafico_hist.update_layout(title_x=0.1)
         st.plotly_chart(grafico_hist, use_container_width=True)
@@ -123,7 +125,7 @@ with coluna_grafico3:
             values='quantidade',
             title='Proporção dos tipos de trabalho',
             hole=0.5,
-            color_discrete_sequence=["#0948F3", "#FF2802", "#00FF0D"],
+            color_discrete_sequence=["cornflowerblue", "coral", "palegreen"],
         )
         grafico_remoto.update_traces(textinfo='percent+label')
         grafico_remoto.update_layout(title_x=0.1)
@@ -150,5 +152,4 @@ st.markdown("---")
 
 # --- Tabela de Dados Detalhados ---
 st.subheader("Dados Detalhados")
-
 st.dataframe(df_filtrado)
